@@ -1,0 +1,12 @@
+<h1>Welcome, <%= current_user.email %></h1>
+
+<h1>Categories</h1>
+
+<% @categories.each do |category| %>  
+  <h2>
+    <%= category.category_name %>
+  </h2>
+<% end %>
+
+
+<%= button_to "Logout", destroy_user_session_path, method: :delete, class: "bg-gray-100 px-4 rounded hover:bg-gray-200 cursor-pointer" %>
