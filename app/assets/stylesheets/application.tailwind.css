@@ -8,20 +8,45 @@
 @layer base {
   html {
     font-family: "Nunito", sans-serif;
+    @apply tracking-wider;
   }
 }
 
 @layer components {
-  .btn {
-    @apply w-full grid place-items-center px-4 py-2 rounded-3xl border-2 border-slate-950;
+  .form__block {
+    @apply w-full sm:w-1/6 h-full flex flex-col justify-between sm:justify-center items-center gap-4 py-4
   }
+
+  .form__header {
+    @apply w-full text-[2rem] font-bold;
+  }
+
+  .btn, .actions {
+    @apply w-full grid place-items-center px-4 py-2 rounded-3xl border-2 border-slate-950 font-bold hover:opacity-55 cursor-pointer;
+  }
+
   .btn--main {
-    @apply bg-accentV1;
+    @apply bg-accentV1 mt-4;
   }
-  .btn--accent {
+
+  .btn--subv1 {
     @apply bg-accentV3;
   }
-  .input__field {
-    @apply border-2 border-slate-950 rounded-2xl;
+
+  .btn--subv2 {
+    @apply bg-accentV2;
   }
+
+  .field input, .field textarea {
+    @apply border-2 border-slate-950 rounded-2xl w-full;
+  }
+
+  .field input[type="checkbox"] {
+    @apply border-2 border-slate-950 rounded-md w-5 h-5;
+  }
+
+  .sharedlinks__bottom {
+    @apply w-full flex flex-col gap-2 p-2 mt-4;
+  }
+
 }

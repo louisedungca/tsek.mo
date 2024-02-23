@@ -2,18 +2,20 @@
 <html>
 <head>
   <title>Taskify</title>
+  <link rel="icon" type="image/x-icon" href="/taskify_logo.ico">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <%= csrf_meta_tags %>
   <%= csp_meta_tag %>
+  
   <%= stylesheet_link_tag "tailwind", "inter-font", "data-turbo-track": "reload" %>
   <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
   <%= javascript_importmap_tags %>
 </head>
-<body class="relative bg-pink-50 w-full min-h-dvh h-full flex flex-col items-center">
+<body class="relative bg-purple-50 w-full min-h-dvh h-screen flex flex-col items-center">
   <%= render partial: "layouts/flash_mesgs" %>
   
-  <main class="relative w-full h-5/6 flex flex-col items-center justify-center">
-    <section class="h-full w-full flex flex-col items-center justify-center sm:gap-4 px-4 pb-10">
+  <main class="w-full h-full flex flex-col items-center justify-center">
+    <section class="h-full w-full flex flex-col items-center justify-center sm:gap-4 px-4 py-2">
       <%= yield %>
     </section>
   </main>
