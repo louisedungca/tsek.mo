@@ -46,9 +46,9 @@ en:
       updated: "Your account has been successfully updated."
       updated_but_not_signed_in: "Your account has been successfully updated, but since your password was changed, you need to sign in again."
     sessions:
-      signed_in: "Signed in success."
-      signed_out: "Signed out success."
-      already_signed_out: "Signed out success."
+      signed_in: "Sign in success."
+      signed_out: "Sign out success."
+      already_signed_out: "Sign out success."
     unlocks:
       send_instructions: "You will receive an email with instructions for how to unlock your account in a few minutes."
       send_paranoid_instructions: "If your account exists, you will receive an email with instructions for how to unlock it in a few minutes."

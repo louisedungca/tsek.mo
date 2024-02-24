@@ -1,0 +1,27 @@
+<%= form_with model: @category do |form| %>  
+<div class="w-full h-full flex flex-col justify-center gap-3 sm:gap-[1.5rem]">
+  <% if @category.errors.any? %>    
+    <div class="flex flex-col justify-center">
+      <% @category.errors.full_messages.each do |message| %>
+        <p class="text-red-500 text-fSize__sm lowercase font-semibold">
+          ** <%= message %>
+        </p>
+      <% end %>  
+    </div>
+  <% end %>
+  
+  <div class="h-full w-full flex flex-col gap-2">
+    <div class="field">
+      <%= form.label "Category Name:" %>
+      <%= form.text_field :category_name %>
+    </div>
+  </div>  
+
+  <%= form.hidden_field :user_id, value: current_user.id %>
+
+  <div class="sharedlinks__bottom">
+    <%= form.button "Submit", class:"actions btn--main" %>
+    <%= link_to "Back", :back, class:"actions btn--subv1" %>
+  </div>
+</div>
+<% end %>

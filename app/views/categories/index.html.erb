@@ -1,12 +1,21 @@
 <h1>Welcome, <%= current_user.email %></h1>
 
 <h1>Categories</h1>
-
+<div class="flex justify-between gap-4">
 <% @categories.each do |category| %>  
-  <h2>
-    <%= category.category_name %>
-  </h2>
+  <div class="border-2 border-slate-950 rounded-xl">
+    <h2 class="bg-primary rounded-t-lg p-2 text-purple-50 font-bold">
+      <%= link_to category.category_name, category %>
+    </h2>
+
+    <div class="p-4">
+      <%= link_to "Edit", edit_category_path(category) %>
+      <%= link_to "Delete", category_path(category), data: { turbo_method: :delete, turbo_confirm: "Are you sure you want to permanently delete this category?" } %>
+    </div>
+  </div>
 <% end %>
-
-
-<%= button_to "Logout", destroy_user_session_path, method: :delete, class: "bg-gray-100 px-4 rounded hover:bg-gray-200 cursor-pointer" %>
+</div>
+<div class="sharedlinks__bottom sm:w-1/5">
+  <%= link_to "New Category", new_category_path, class: "actions btn--main" %>
+  <%= button_to "Logout", destroy_user_session_path, method: :delete, class: "actions btn--subv2" %>
+</div>

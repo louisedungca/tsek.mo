@@ -3,7 +3,7 @@ class CategoriesController < ApplicationController
   before_action :set_category, except: [:index, :create, :new]
 
   def index
-    @categories = current_user.categories.order(created_at: :desc)
+    @categories = current_user.categories.all.order(created_at: :desc)
   end
 
   def show
