@@ -1,3 +1,20 @@
 <h1>Show:
   <%= @category.category_name %>
 </h1>
+
+<%= render partial: "tasks/task_form" %>
+
+
+<div>
+  <h1 class="form__header">Tasks</h1>
+
+  <div>
+    
+    <% @category.tasks.each do |task| %>
+      <p>
+        <%= task.task_item %>
+      </p>
+    <% end %>
+    
+  </div>
+</div>
