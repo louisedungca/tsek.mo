@@ -8,13 +8,17 @@
 <div>
   <h1 class="form__header">Tasks</h1>
 
-  <div>
-    
+  <%= render @category.tasks %>
+
+  
+<!--
+  <div>    
     <% @category.tasks.each do |task| %>
       <p>
         <%= task.task_item %>
       </p>
-    <% end %>
-    
+    <% end %>    
   </div>
+-->
+
 </div>
