@@ -18,7 +18,7 @@ class TasksController < ApplicationController
   end
 
   def update
-    if @category.tasks.update(task_params)
+    if @task.update(task_params)
       flash[:notice] = "Task item successfully updated!"
       redirect_to category_path(@category)
     else
@@ -50,7 +50,7 @@ class TasksController < ApplicationController
   end
 
   def set_task
-    @task = Task.find(params[:id])
+    @task = @category.tasks.find(params[:id])
 
   rescue ActiveRecord::RecordNotFound
     flash[:alert] = "Oh no! The task you were looking for does not exist."
