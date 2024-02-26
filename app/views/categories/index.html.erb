@@ -16,10 +16,19 @@
 
       <div class="min-h-[250px] flex flex-col gap-2 p-2">        
         <% category.tasks.each do |task| %>
-          <p>
-            <%= task.task_item %>
-          </p>
+          <% if task.id.present? && task.is_completed == false %>
+            <%= render partial: "tasks/show_task", locals: { task: task } %>
+          <% end %>
         <% end %>
+        
+        <% if category.tasks.any?(&:is_completed) %>
+          <p>Completed:</p>
+          <% category.tasks.each do |task| %>
+            <% if task.id.present? && task.is_completed == true %>
+              <%= render partial: "tasks/show_task", locals: { task: task } %>
+            <% end %>
+          <% end %>
+        <% end %>        
       </div>
     </div>
   <% end %>
