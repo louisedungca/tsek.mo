@@ -6,13 +6,19 @@
 
 <div>
   <h1 class="form__header">Tasks</h1>
-  <%= render @category.tasks %>
+  <% @tasks.each do |task| %>
+    <% if task.id.present? && task.is_completed == false %>
+      <%= render partial: "tasks/show_task", locals: { task: task } %> 
+    <% end %>  
+  <% end %>
   
   <% if @tasks.any?(&:is_completed) %>
     <p>Completed:</p>
   
     <% @tasks.each do |task| %>
-      <%= render partial: "tasks/completed", locals: { task: task } %>
+      <% if task.id.present? && task.is_completed == true %>
+        <%= render partial: "tasks/show_task", locals: { task: task } %>
+      <% end %>
     <% end %>
   <% end %>
 </div>

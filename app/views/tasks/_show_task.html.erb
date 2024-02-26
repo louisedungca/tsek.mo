@@ -1,0 +1,12 @@
+<div class="border-2 border-dotted border-slate-950">
+  <%= form_with model: task, url: [task.category, task], method: :patch do |form| %>
+  <div class="field flex items-center gap-2">
+    <%= form.check_box :is_completed, as: :boolean, onchange: "this.form.submit()" %>    
+    <div class="<%= task.is_completed ? "italic line-through" : "" %>">
+      <%= form.label :is_completed, task.task_item %>
+    </div>     
+  </div> 
+    <%= link_to "Edit", edit_category_task_path(task.category_id, task.id) %>
+    <%= link_to "Delete", [task.category, task], data: { turbo_method: :delete, turbo_confirm: "Are you sure you want to delete this task?"} %>
+  <% end %>    
+</div>
