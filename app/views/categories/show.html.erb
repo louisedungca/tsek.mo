@@ -8,10 +8,11 @@
   <h1 class="form__header">Tasks</h1>
   <%= render @category.tasks %>
   
-  <p>Completed:</p>
-  <% @tasks.each do |task| %>
-    <div>
+  <% if @tasks.any?(&:is_completed) %>
+    <p>Completed:</p>
+  
+    <% @tasks.each do |task| %>
       <%= render partial: "tasks/completed", locals: { task: task } %>
-    </div>
-  <% end %> 
+    <% end %>
+  <% end %>
 </div>
