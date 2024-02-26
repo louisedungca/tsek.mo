@@ -1,4 +1,4 @@
-<h1>Show:
+<h1>Category:
   <%= @category.category_name %>
 </h1>
 
@@ -7,4 +7,11 @@
 <div>
   <h1 class="form__header">Tasks</h1>
   <%= render @category.tasks %>
+  
+  <p>Completed:</p>
+  <% @tasks.each do |task| %>
+    <div>
+      <%= render partial: "tasks/completed", locals: { task: task } %>
+    </div>
+  <% end %> 
 </div>

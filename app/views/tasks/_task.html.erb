@@ -1,11 +1,18 @@
-<div class="border-2 border-dotted border-slate-950">
-  <%= form_with model: @task, method: :patch do |form| %>
-    <div class="field">
-      <%= form.check_box :is_completed %>
-      <%= form.label task.task_item %>
-    </div>
-  <% end %>
+<% if task.id.present? && task.is_completed == false %>
+  <div class="border-2 border-dotted border-slate-950">
+      Task: <%= task.task_item %>
+      (category_id: <%= task.category_id %>
+      task id: <%= task.id %>)
 
-  <%= link_to "Edit", "/categories/#{task.category_id}/tasks/#{task.id}/edit" %>
-  <%= link_to "Delete", [task.category, task], data: { turbo_method: :delete, turbo_confirm: "Are you sure you want to delete this task?"} %>
-</div>
+    <%= form_with model: @task, url: [task.category, task], method: :patch do |form| %>
+      <%= form.check_box :is_completed, as: :boolean %>
+      <%= form.label :is_completed, "Done" %> <br/>
+
+      <%= form.button "Update", class:"btn--main" %>    
+
+      <%= link_to "Edit", edit_category_task_path(task.category_id, task.id) %>
+      <%= link_to "Delete", [task.category, task], data: { turbo_method: :delete, turbo_confirm: "Are you sure you want to delete this task?"} %>
+    <% end %>    
+  </div>    
+<% end %>
+

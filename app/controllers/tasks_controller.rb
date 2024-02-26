@@ -25,6 +25,8 @@ class TasksController < ApplicationController
       flash[:alert] = "Oops, there was a problem updating the task item. Please try again."
       render :edit, status: 422
     end
+
+    puts params.inspect
   end
 
   def destroy
@@ -38,7 +40,7 @@ class TasksController < ApplicationController
   def task_params
     params
       .require(:task)
-      .permit(:task_item, :due_date, :is_completed)
+      .permit(:task_item, :due_date, :is_completed, :category_id)
   end
 
   def set_category
@@ -50,6 +52,7 @@ class TasksController < ApplicationController
   end
 
   def set_task
+    @category = Category.find(params[:category_id])
     @task = @category.tasks.find(params[:id])
 
   rescue ActiveRecord::RecordNotFound
