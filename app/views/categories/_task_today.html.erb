@@ -1,0 +1,23 @@
+<aside class="border-black border-2 border-dotted w-1/3 h-full p-2">
+  <div class="w-full h-full border-2 border-slate-950 rounded-3xl flex flex-col justify-center gap-2 p-4">
+    <h1 class="border-black border-2 border-dotted">
+      Today
+    </h1>
+    
+    <% @tasks_due_today.each do |task| %>
+      <% if task.is_completed == false %>
+        <%= render partial: "tasks/show_task", locals: { task: task } %>
+      <% end %>
+    <% end %>
+
+    <% if @tasks_due_today.any?(&:is_completed) %>
+      <p>Completed:</p>
+      <% @tasks_due_today.each do |task| %>
+        <% if task.is_completed == true %>
+          <%= render partial: "tasks/show_task", locals: { task: task } %>
+        <% end %>
+      <% end %>
+    <% end %>      
+
+  </div>
+</aside>

@@ -13,13 +13,17 @@
   <%= javascript_importmap_tags %>
 </head>
 
-<body class="relative bg-purple-50 w-full min-h-dvh flex flex-col items-center ">
-  <%= render partial: "layouts/flash_mesgs" %>
-  
-  <main class="w-full h-full flex items-center justify-center">
-    <section class="border-2 border-pink-500 border-dotted h-full w-full flex flex-col items-center justify-center sm:gap-4 px-4 py-2 overflow-y-auto">
+<body class="relative bg-purple-50 w-full min-h-dvh flex flex-col items-center overflow">
+  <%= render partial: "shared/flash_mesgs" %>
+
+  <main class="w-full h-dvh flex items-center justify-center">   
+    <section class="border-2 border-pink-500 border-dotted h-full w-full flex flex-col items-center justify-center p-2 overflow-y-auto"> 
       <%= yield %>
     </section>
+
+    <% if params[:controller] == "categories" && params[:action] == "index" %>
+      <%= render partial: "task_today" %>
+    <% end %>
   </main>
 </body>
 </html>
