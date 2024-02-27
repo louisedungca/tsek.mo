@@ -47,4 +47,3 @@ ActiveRecord::Schema[7.1].define(version: 2024_02_23_032946) do
   add_foreign_key "categories", "users"
   add_foreign_key "tasks", "categories"
 end
-

@@ -19,7 +19,7 @@
         <%= link_to "Add Task", category_path(category) %>
 
         <% category.tasks.each do |task| %>
-          <% if task.id.present? && task.is_completed == false %>
+          <% if task.is_completed == false %>
             <%= render partial: "tasks/show_task", locals: { task: task } %>
           <% end %>
         <% end %>
@@ -27,7 +27,7 @@
         <% if category.tasks.any?(&:is_completed) %>
           <p>Completed:</p>
           <% category.tasks.each do |task| %>
-            <% if task.id.present? && task.is_completed == true %>
+            <% if task.is_completed == true %>
               <%= render partial: "tasks/show_task", locals: { task: task } %>
             <% end %>
           <% end %>
