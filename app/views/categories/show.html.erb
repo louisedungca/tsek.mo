@@ -7,7 +7,7 @@
 <div>
   <h1 class="form__header">Tasks</h1>
   <% @tasks.each do |task| %>
-    <% if  task.is_completed == false %>
+    <% if task.id.present? && task.is_completed == false %>
       <%= render partial: "tasks/show_task", locals: { task: task } %> 
     <% end %>  
   <% end %>
@@ -16,7 +16,7 @@
     <p>Completed:</p>
   
     <% @tasks.each do |task| %>
-      <% if task.is_completed == true %>
+      <% if task.id.present? && task.is_completed == true %>
         <%= render partial: "tasks/show_task", locals: { task: task } %>
       <% end %>
     <% end %>

@@ -13,14 +13,13 @@
   <%= javascript_importmap_tags %>
 </head>
 
-<body class="relative bg-purple-50 w-full min-h-dvh h-screen flex flex-col items-center">
+<body class="relative bg-purple-50 w-full min-h-dvh flex flex-col items-center ">
   <%= render partial: "layouts/flash_mesgs" %>
   
-  <main class="w-full h-full flex flex-col items-center justify-center">
-    <section class="h-full w-full flex flex-col items-center justify-center sm:gap-4 px-4 py-2">
+  <main class="w-full h-full flex items-center justify-center">
+    <section class="border-2 border-pink-500 border-dotted h-full w-full flex flex-col items-center justify-center sm:gap-4 px-4 py-2 overflow-y-auto">
       <%= yield %>
     </section>
   </main>
-
 </body>
 </html>
