@@ -32,7 +32,7 @@ class CategoriesController < ApplicationController
   def update
     if @category.update(category_params)
       flash[:notice] = "Category name successfully updated!"
-      redirect_to categories_path
+      redirect_to category_path(@category)
     else
       flash[:alert] = "Oops, there was a problem updating the category. Please try again."
       render :edit, status: 422
