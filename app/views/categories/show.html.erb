@@ -1,18 +1,14 @@
-<div class="w-full h-full flex flex-col items-center overflow">
-  <!--header-->
-  <div class="grid place-items-center px-4 w-2/3 h-auto p-2">
-    <h1 class="actions bg-accentV1 uppercase text-lg flex gap-4 items-center justify-center">  
-      <%= @category.category_name %>            
-      <%= link_to edit_category_path(@category) do %>
+<div class="w-full h-full flex flex-col items-center gap-2 overflow">
+  <div class="grid place-items-center px-4 w-2/3 h-auto p-2 actions btn--main">
+    <%= link_to edit_category_path(@category) do %>
+      <h1 class=" uppercase text-lg flex gap-4 items-center justify-center">
+        <%= @category.category_name %> 
         <i class="fa-solid fa-pencil grid place-items-center text-xs"></i>
-      <% end %>                                  
-    </h1>
+      </h1>
+    <% end %>                                  
   </div>
 
-  <!--body-->
   <div class="w-full h-[90%] px-6 flex justify-center">
-
-  <!--add task-->
     <div class="w-1/4 h-full border-2 border-slate-950 rounded-3xl bg-sky-100 flex flex-col justify-between gap-2">
       <div class="header--main h-auto border-b-2 border-slate-950">
         <h1>Add Task</h1>
@@ -26,9 +22,8 @@
         <!--dark blue bottom design-->
       </div>
     </div>
-  <!--end add task-->
   
-  <!--show task-->
+<!--show task-->
     <div class="w-2/3 h-full flex">
       <% if @tasks.size > 0 %>
         <div class="flex flex-col w-full">
@@ -68,10 +63,7 @@
           </div>    
         </div>
       <% end %>
-
     </div>
-  <!--end show task-->
+<!--end show task-->
   </div>
-  <!--end body-->
-
 </div>
