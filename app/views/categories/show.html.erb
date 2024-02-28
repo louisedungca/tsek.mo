@@ -1,7 +1,13 @@
 <div class="w-2/3 h-fit flex justify-center items-center gap-3 py-2">
-  <div class="flex justify-center items-center px-4 w-full h-auto p-2 actions bg-accentV1">
+  <div class="grid place-items-center bg-accentV2 rounded-full h-10 aspect-1 text-slate-950 border-2 border-slate-950">
+    <%= link_to root_path do %>
+      <i class="fa-solid fa-house text-sky-50"></i>
+    <% end %>
+  </div>
+
+  <div class="flex justify-center items-center px-4 w-full h-auto p-2 actions bg-primary">
     <%= link_to edit_category_path(@category) do %>
-      <h1 class=" uppercase text-lg flex gap-4 items-center justify-center">
+      <h1 class=" uppercase text-lg text-sky-50 flex gap-4 items-center justify-center">
         <%= @category.category_name %> 
         <i class="fa-solid fa-pencil grid place-items-center text-xs"></i>
       </h1>
@@ -21,7 +27,7 @@
       <h1>Add Task</h1>
     </div> 
 
-    <div class="h-2/3 px-6 py-2 flex flex-col items-center">
+    <div class="h-2/3 form__block">
       <%= render partial: "tasks/add_task_form" %>
     </div>
 
@@ -35,9 +41,8 @@
     <% if @tasks.size > 0 %>
       <div class="flex flex-col w-full">
         <h1 class="header--main">
-          Tasks
-
           <% incomplete_tasks_count = @tasks.count { |task| !task.is_completed } %>
+          <%= incomplete_tasks_count > 1 ? "Tasks" : "Task" %>
           <%= "(#{incomplete_tasks_count})" %>
         </h1> 
 

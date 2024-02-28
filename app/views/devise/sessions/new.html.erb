@@ -1,43 +1,43 @@
-<div class="form__block">
-  <h1 class="form__header">
-    Welcome back!
-  </h1>
+<div class="w-1/3 h-[90%] border-2 border-slate-950 rounded-3xl bg-sky-100 flex flex-col justify-between gap-2">
 
-  <div class="w-full">
-    <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
-      <div class="flex flex-col gap-4 p-2">
-        <div class="field">
-          <%= f.label :email %><br />
-          <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
-        </div>
+  <div class="header--main border-b-2 border-slate-950">
+    <h1>hey, you're back!</h1>
+  </div> 
 
-        <div class="field">
-          <%= f.label :password %><br />
-          <%= f.password_field :password, autocomplete: "current-password" %>
-        </div>
-
-        <% if devise_mapping.rememberable? %>
+  <div class="form__block">
+    <div class="w-full">
+      <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+        <div class="flex flex-col gap-4 p-2">
           <div class="field">
-            <%= f.check_box :remember_me %>
-            <%= f.label :remember_me %>
+            <%= f.label :email %>
+            <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
           </div>
-        <% end %>
 
-        <div class="actions btn--main">
-          <%= f.button "Login", class:"tracking-wider" %>
+          <div class="field">
+            <%= f.label :password %>
+            <%= f.password_field :password, autocomplete: "current-password" %>
+          </div>
+
+          <% if devise_mapping.rememberable? %>
+            <div class="field flex-row">
+              <%= f.check_box :remember_me %>
+              <%= f.label :remember_me %>
+            </div>
+          <% end %>
+
+          <div class="actions btn--main">
+            <%= f.button "Login", class:"tracking-wider uppercase" %>
+          </div>
         </div>
-      </div>
-    <% end %>
+      <% end %>
+    </div>
+
+    <div class="sharedlinks__bottom">
+      <%= render "devise/shared/links" %>
+    </div>
   </div>
 
-  <div class="sharedlinks__bottom">
-    <%= render "devise/shared/links" %>
+  <div class="h-1/4 w-full bg-primary border-t-2 border-slate-950 rounded-tr-[5rem] rounded-b-3xl">
+    <!--dark blue bottom design-->
   </div>
-<!--
-  <div class="bg-primary rounded-tr-none rounded-3xl border-2 border-slate-950 w-full h-1/4 grid place-items-center p-6 font-bold">
-    <div class="bg-purple-50 rounded-xl border-2 border-slate-950 w-full max-h-full h-full grid place-items-cente p-2 overflow-hidden">
-      
-    </div>    
-  </div>
---> 
 </div>

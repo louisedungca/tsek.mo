@@ -1,22 +1,31 @@
-<div class="form__block">
-  <h1 class="form__header">Forgot your password?</h1>
+<div class="w-1/3 h-[90%] border-2 border-slate-950 rounded-3xl bg-sky-100 flex flex-col justify-between gap-2">
 
-  <div class="w-full">
-  <%= form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :post }) do |f| %>
-    <%= render "devise/shared/error_messages", resource: resource %>
-    <div class="flex flex-col gap-4 p-2">
-      <div class="field">
-        <%= f.label :email %><br />
-        <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
+  <div class="header--main border-b-2 border-slate-950">
+    <h1>Forgot password?</h1>
+  </div> 
+
+  <div class="form__block">
+    <div class="w-full">
+      <%= form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :post }) do |f| %>
+        <%= render "devise/shared/error_messages", resource: resource %>
+        <div class="flex flex-col gap-4 p-2">
+          <div class="field">
+            <%= f.label :email %>
+            <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
+          </div>
+
+          <div class="actions btn--main">
+            <%= f.submit "Send reset password instructions", class:"tracking-wider uppercase" %>
+          </div>
+        </div>
+      <% end %>
       </div>
-
-      <div class="actions btn--main">
-        <%= f.submit "Send reset password instructions" %>
+      <div class="sharedlinks__bottom">
+        <%= render "devise/shared/links" %>
       </div>
     </div>
-  <% end %>
-  </div>
-  <div class="sharedlinks__bottom">
-    <%= render "devise/shared/links" %>
+
+  <div class="h-1/4 w-full bg-primary border-t-2 border-slate-950 rounded-tr-[5rem] rounded-b-3xl">
+    <!--dark blue bottom design-->
   </div>
 </div>
