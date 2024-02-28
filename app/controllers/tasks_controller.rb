@@ -20,8 +20,7 @@ class TasksController < ApplicationController
   def update
     if @task.update(task_params)
       flash[:notice] = "Task item successfully updated!"
-      redirect_back(fallback_location: root_path)
-      # redirect_to category_path(@category)
+      redirect_to categories_path
     else
       flash[:alert] = "Oops, there was a problem updating the task item. Please try again."
       render :edit, status: 422
@@ -34,7 +33,6 @@ class TasksController < ApplicationController
     @task.destroy
     flash[:alert] = "Task permanently deleted."
     redirect_back(fallback_location: root_path)
-    # redirect_to category_path(@category)
   end
 
   private
