@@ -1,14 +1,14 @@
 <div class="actions btn--main w-2/3">
   <%= link_to new_category_path do %>
-    <div class="flex items-center justify-center gap-2 text-xs">
+    <div class="flex items-center justify-center gap-2 text-sm">
       <i class="fa-solid fa-circle-plus grid place-items-center"></i>
-      <span>Create Category</span>
+      <span>New Category</span>
     </div>
   <% end %>
 </div>
 <div class="w-full h-full grid--auto py-4">
   <% @categories.each do |category| %>  
-    <div class="min-w-[300px] h-full max-h-[260px] bg-sky-50 border-2 border-slate-950 rounded-xl flex flex-col gap-2">
+    <div class="min-w-xl max-w-xl h-full max-h-[260px] bg-sky-50 border-2 border-slate-950 rounded-xl flex flex-col gap-2">
       <div class="relative max-h-fit bg-primary border-slate-950 border-b-2 rounded-t-lg p-4 text-sky-50 font-bold">               
         <div class="flex items-center gap-4 mt-2">   
           <%= link_to category.category_name, category %>            
