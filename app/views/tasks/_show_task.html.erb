@@ -19,7 +19,7 @@
   </div>  
 
   <div class="field w-full text-red-500 text-[0.7rem] px-2 flex items-center gap-2">
-    <% if task.due_date < Date.today && task.is_completed == false %>
+    <% if task.due_date.present? && task.due_date < Date.today && task.is_completed == false %>
     <div class="opacity-0"><%= form.check_box :is_completed %></div> 
     <small class="font-bold italic">
       <%= task.due_date.strftime("%m/%d/%y") %>
