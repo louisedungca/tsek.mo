@@ -21,7 +21,6 @@ class TasksController < ApplicationController
     if @task.update(task_params)
       flash[:notice] = "Task item successfully updated!"
       redirect_back(fallback_location: root_path)
-      # redirect_to categories_path
     else
       flash[:alert] = "Oops, there was a problem updating the task item. Please try again."
       render :edit, status: 422
