@@ -57,7 +57,7 @@ class CategoriesController < ApplicationController
 
   def set_category
     @category = current_user.categories.find(params[:id])
-    @tasks = @category.tasks
+    @tasks = @category.tasks.where.not(id: nil)
 
   rescue ActiveRecord::RecordNotFound
     flash[:alert] = "Oh no! The category you were looking for does not exist."
