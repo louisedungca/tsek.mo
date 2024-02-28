@@ -3,9 +3,9 @@ class Task < ApplicationRecord
 
   validates :task_item, presence: true
 
-  scope :due_today, ->(user) { joins(:category).where("due_date <= ? AND categories.user_id = ?", Time.current, user.id) }
+  scope :due_today, ->(user) { joins(:category).where("due_date <= ? AND categories.user_id = ?", Date.current, user.id) }
 
-  def due_today?
-    due_date? && due_date <= Time.current
+  def task_overdue?
+    due_date? && due_date <= Date.current
   end
 end

@@ -1,7 +1,7 @@
 <%= form_with model: task, url: [task.category, task], method: :patch do |form| %>
   <div class="flex items-center justify-between w-full px-2">
     <div class="field w-full flex items-center gap-2 text-xs">
-      <%= form.check_box :is_completed, as: :boolean, onchange: "this.form.submit()" %> 
+      <%= form.check_box :is_completed, as: :boolean, checked: task.is_completed, onchange: "this.form.submit()" %> 
       <div class="<%= task.is_completed ? "italic line-through" : "" %>">
         <%= form.label :is_completed, task.task_item %>
       </div>   
@@ -18,12 +18,9 @@
     </div>
   </div>  
 
-  <div class="field w-full text-red-500 text-[0.7rem] px-2 flex items-center gap-2">
-    <% if task.due_date.present? && task.due_date < Date.today && task.is_completed == false %>
-    <div class="opacity-0"><%= form.check_box :is_completed %></div> 
-    <small class="font-bold italic">
-      <%= task.due_date.strftime("%m/%d/%y") %>
-    </small>
-    <% end %>
-  </div>
+  <% if true %>
+    
+  <% end %>
+
+
 <% end %>    
