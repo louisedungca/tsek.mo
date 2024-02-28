@@ -4,7 +4,7 @@ class CategoriesController < ApplicationController
 
   def index
     @categories = current_user.categories.all
-    @tasks_due_today = Task.due_today(current_user)
+    @tasks_due_today = Task.due_today(current_user).order(:due_date)
   end
 
   def show
