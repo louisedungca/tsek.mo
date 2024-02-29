@@ -10,7 +10,7 @@ class TasksController < ApplicationController
       redirect_to category_path(@category)
     else
       flash[:alert] = "Oops, there was a problem adding a task. Please try again."
-      render :new, status: 422
+      redirect_back(fallback_location: category_path(@category))
     end
   end
 
