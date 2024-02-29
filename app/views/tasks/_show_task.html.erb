@@ -3,7 +3,7 @@
     <div class="field w-full flex-row items-center text-xs max-w-[90%]">
       <%= form.check_box :is_completed, as: :boolean, checked: task.is_completed, onchange: "this.form.submit()" %> 
       <div class="<%= task.is_completed ? "italic line-through opacity-60" : "" %> overflow-hidden">
-        <%= form.label :is_completed, task.task_item %>
+        <%= form.label :is_completed, truncate(task.task_item, length: 80) %>
       </div>   
     </div>        
 
