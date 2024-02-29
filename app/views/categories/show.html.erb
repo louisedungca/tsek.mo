@@ -1,43 +1,7 @@
-<div class="w-2/3 h-fit flex justify-center items-center gap-3 py-2">
-  <div class="grid place-items-center bg-accentV2 rounded-full h-10 aspect-1 text-slate-950 border-2 border-slate-950">
-    <%= link_to root_path do %>
-      <i class="fa-solid fa-house text-sky-50"></i>
-    <% end %>
-  </div>
-
-  <div class="flex justify-center items-center px-4 w-full h-auto p-2 actions bg-primary">
-    <%= link_to edit_category_path(@category) do %>
-      <h1 class="w-full uppercase text-lg text-sky-50 flex gap-4 items-center justify-center">
-        <%= truncate(@category.category_name, length: 50) %>
-        <i class="fa-solid fa-pencil grid place-items-center text-xs"></i>
-      </h1>
-    <% end %>                                    
-  </div>
-
-  <div class="grid place-items-center bg-accentV3 rounded-full h-10 aspect-1 text-slate-950 border-2 border-slate-950">
-    <%= link_to category_path(@category), data: { turbo_method: :delete, turbo_confirm: "Are you sure you want to permanently delete this category?" }  do %>
-      <i class="fa-solid fa-x text-sky-50"></i>
-    <% end %>
-  </div>
-</div>
+<%= render partial: "category_header" %>
 
 <div class="w-full h-[85%] px-6 flex justify-center">
-  <div class="w-1/4 h-full border-2 border-slate-950 rounded-3xl bg-sky-100 flex flex-col justify-between gap-2">
-    <div class="header--main border-b-2 border-slate-950">
-      <h1>Add Task</h1>
-    </div> 
-
-    <div class="h-2/3 form__block">
-      <%= render partial: "tasks/add_task_form" %>
-    </div>
-
-    <div class="h-1/4 w-full bg-primary border-t-2 border-slate-950 rounded-tr-[5rem] rounded-b-3xl flex flex-col items-center justify-end p-4">
-      <%#= image_tag("tsekmo_logo.png", alt: "tsek.mo_logo", class:"w-8 h-8") %>
-      <h1 class="h-fit font-semibold text-sky-50 text-xs">
-        tsek.mo © 2024
-      </h1>
-    </div>
-  </div>
+  <%= render partial: "tasks/new_task" %>
 
 <!--show task-->
   <div class="w-2/3 h-full flex">
