@@ -19,7 +19,7 @@ class CategoriesController < ApplicationController
 
     if @category.save
       flash[:notice] = "Category successfully added!"
-      redirect_to root_path
+      redirect_to category_path(@category)
     else
       flash[:alert] = "Oops, there was a problem adding a category. Please try again."
       render :new, status: 422

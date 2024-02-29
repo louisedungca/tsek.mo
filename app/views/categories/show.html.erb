@@ -23,6 +23,11 @@
           <% end %>
         </div>
       </div>
+    
+    <% else %>
+      <h1 class="header--main h-full grid place-items-center drop-shadow-lg">
+        No task to do
+      </h1>
     <% end %>
 
     <% if @tasks.any?(&:is_completed) %>

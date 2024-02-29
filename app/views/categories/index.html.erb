@@ -8,51 +8,56 @@
 </div>
 
 <div class="overflow w-full h-full pr-4 py-2">
-  <div class="w-full h-full grid--auto py-4 drop-shadow-lg">
-    <% @categories.each do |category| %>  
-      <div class="min-w-xl max-w-xl h-full max-h-[260px] bg-sky-50 border-2 border-slate-950 rounded-xl flex flex-col gap-2">
-        <div class="relative max-h-fit bg-primary border-slate-950 border-b-2 rounded-t-lg p-4 text-sky-50 font-bold drop-shadow-lg">               
-          <div class="flex items-center gap-4 mt-2 max-w-[300px]">   
-            <%= link_to category.category_name, category, class:"truncate" %>            
-            <%= link_to edit_category_path(category) do %>
-              <i class="fa-solid fa-pencil grid place-items-center text-xs"></i>
-            <% end %>                                  
-          </div>              
+  <% if @categories.size == 0 %>
+    <h1 class="header--main h-full w-full grid place-items-center drop-shadow-lg">
+      Add a category for your to-do
+    </h1>
+  <% else %>
+    <div class="w-full h-full grid--auto py-4 drop-shadow-lg">    
+      <% @categories.each do |category| %>  
+        <div class="min-w-xl max-w-xl h-full max-h-[260px] bg-sky-50 border-2 border-slate-950 rounded-xl flex flex-col gap-2">
+          <div class="relative max-h-fit bg-primary border-slate-950 border-b-2 rounded-t-lg p-4 text-sky-50 font-bold drop-shadow-lg">               
+            <div class="flex items-center gap-4 mt-2 max-w-[300px]">   
+              <%= link_to category.category_name, category, class:"truncate" %>            
+              <%= link_to edit_category_path(category) do %>
+                <i class="fa-solid fa-pencil grid place-items-center text-xs"></i>
+              <% end %>                                  
+            </div>              
 
-          <%= link_to category_path(category), data: { turbo_method: :delete, turbo_confirm: "Are you sure you want to permanently delete this category?" }, class:"grid place-items-center absolute top-[-8px] right-[-8px] bg-accentV3 rounded-full w-8 h-8 text-slate-950 border-2 border-slate-950 drop-shadow-lg" do %>
-            <i class="fa-solid fa-xmark text-sky-50"></i>
-          <% end %>          
-        </div> 
+            <%= link_to category_path(category), data: { turbo_method: :delete, turbo_confirm: "Are you sure you want to permanently delete this category?" }, class:"grid place-items-center absolute top-[-8px] right-[-8px] bg-accentV3 rounded-full w-8 h-8 text-slate-950 border-2 border-slate-950 drop-shadow-lg" do %>
+              <i class="fa-solid fa-xmark text-sky-50"></i>
+            <% end %>          
+          </div> 
 
-        <div class="w-full h-auto grid place-items-center px-4">
-          <%= link_to category_path(category), class:"actions btn--subv2" do %>
-            <div class="flex items-center justify-center gap-2 text-xs text-sky-50">
-              <i class="fa-solid fa-circle-plus grid place-items-center"></i>
-              <span>Task</span>
-            </div>
-          <% end %> 
-        </div>
+          <div class="w-full h-auto grid place-items-center px-4">
+            <%= link_to category_path(category), class:"actions btn--subv2" do %>
+              <div class="flex items-center justify-center gap-2 text-xs text-sky-50">
+                <i class="fa-solid fa-circle-plus grid place-items-center"></i>
+                <span>Task</span>
+              </div>
+            <% end %> 
+          </div>
 
-        <div class="h-[145px] flex flex-col p-2">
-          <div class="overflow py-2 flex flex-col gap-2 max-h-full">   
-            <% category.tasks.each do |task| %>
-              <% if task.is_completed == false %>
-                <%= render partial: "tasks/show_task", locals: { task: task } %>
-              <% end %>
-            <% end %>
-            
-            <% if category.tasks.any?(&:is_completed) %>
-              <p class="uppercase mt-2">Completed:</p>
+          <div class="h-[145px] flex flex-col p-2">
+            <div class="overflow py-2 flex flex-col gap-2 max-h-full">   
               <% category.tasks.each do |task| %>
-                <% if task.is_completed == true %>
+                <% if task.is_completed == false %>
                   <%= render partial: "tasks/show_task", locals: { task: task } %>
                 <% end %>
               <% end %>
-            <% end %>     
-          </div>   
+              
+              <% if category.tasks.any?(&:is_completed) %>
+                <p class="uppercase mt-2">Completed:</p>
+                <% category.tasks.each do |task| %>
+                  <% if task.is_completed == true %>
+                    <%= render partial: "tasks/show_task", locals: { task: task } %>
+                  <% end %>
+                <% end %>
+              <% end %>     
+            </div>   
+          </div>
         </div>
-      </div>
-    <% end %>
-
-  </div>
+      <% end %>
+    </div>
+  <% end %>
 </div>
