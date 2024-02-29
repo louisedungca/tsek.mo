@@ -39,7 +39,9 @@
 
         <div class="sharedlinks__bottom">
           <%= form.button "Submit", class:"actions btn--main" %>
-          <%= link_to "Back", category_path(@category), class:"actions btn--subv2" %>
+          <%= link_to category_path(@category), class:"actions btn--subv2" do %> 
+            <%= content_tag :p, "Back to #{truncate(@category.category_name, length: 50)}", class:"text-center" %>        
+          <% end %>
           <%= link_to "Home", categories_path, class:"actions bg-secondary" %>
         </div>
       </div>
