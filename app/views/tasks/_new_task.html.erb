@@ -1,0 +1,16 @@
+<div class="w-1/4 h-full border-2 border-slate-950 rounded-3xl bg-sky-100 flex flex-col justify-between gap-2">
+  <div class="header--main border-b-2 border-slate-950">
+    <h1>Add Task</h1>
+  </div> 
+
+  <div class="h-2/3 form__block">
+    <%= render partial: "tasks/add_task_form" %>
+  </div>
+
+  <div class="h-1/5 w-full bg-primary border-t-2 border-slate-950 rounded-tr-[5rem] rounded-b-3xl flex flex-col items-center justify-end p-4">
+    <%#= image_tag("tsekmo_logo.png", alt: "tsek.mo_logo", class:"w-8 h-8") %>
+    <h1 class="h-fit font-semibold text-sky-50 text-xs">
+      tsek.mo © 2024
+    </h1>
+  </div>
+</div>

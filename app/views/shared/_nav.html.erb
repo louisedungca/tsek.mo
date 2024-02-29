@@ -1,0 +1,20 @@
+<% if current_user.present? %>
+  <nav class="bg-sky-100 border-2 border-slate-950 w-full h-16 rounded-3xl flex items-center justify-between px-6 py-4">
+
+    <div class="flex items-center">
+      <%= link_to root_path do %>
+        <%= image_tag("tsekmo_logo.png", alt: "tsek.mo_logo", class:"w-10 h-10 drop-shadow-xl") %>      
+      <% end %>
+      
+      <%= link_to edit_user_registration_path do %>
+        <h1 class="header--main">
+          hello, <%= current_user.email %>
+        </h1>
+      <% end %>
+    </div>
+    
+    <div class="w-max flex justify-center items-center text-sky-50">
+      <%= link_to "Logout", destroy_user_session_path, data: { turbo_method: :delete }, class: "actions btn--subv1" %>
+    </div>
+  </nav>
+<% end %>

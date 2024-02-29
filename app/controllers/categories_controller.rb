@@ -3,7 +3,8 @@ class CategoriesController < ApplicationController
   before_action :set_category, except: [:index, :create, :new]
 
   def index
-    @categories = current_user.categories.order(created_at: :desc)
+    @categories = current_user.categories.all
+    @tasks_due_today = Task.due_today(current_user).order(:due_date)
   end
 
   def show
@@ -20,7 +21,7 @@ class CategoriesController < ApplicationController
       flash[:notice] = "Category successfully added!"
       redirect_to root_path
     else
-      flash[:alert] = "Oops, there was a problem submitting the form. Please try again."
+      flash[:alert] = "Oops, there was a problem adding a category. Please try again."
       render :new, status: 422
     end
   end
@@ -31,16 +32,16 @@ class CategoriesController < ApplicationController
   def update
     if @category.update(category_params)
       flash[:notice] = "Category name successfully updated!"
-      redirect_to categories_path
+      redirect_to category_path(@category)
     else
-      flash[:alert] = "Oops, there was a problem submitting the form. Please try again."
+      flash[:alert] = "Oops, there was a problem updating the category. Please try again."
       render :edit, status: 422
     end
   end
 
   def destroy
     if @category.destroy
-      flash[:notice] = "Category permanently deleted."
+      flash[:alert] = "Category permanently deleted."
       redirect_to categories_path
     else
       flash[:alert] = "Oops, there was a problem deleting the item. Please try again."
@@ -56,6 +57,7 @@ class CategoriesController < ApplicationController
 
   def set_category
     @category = current_user.categories.find(params[:id])
+    @tasks = @category.tasks.where.not(id: nil).order(:due_date)
 
   rescue ActiveRecord::RecordNotFound
     flash[:alert] = "Oh no! The category you were looking for does not exist."

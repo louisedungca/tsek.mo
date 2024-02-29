@@ -2,11 +2,10 @@ class Task < ApplicationRecord
   belongs_to :category
 
   validates :task_item, presence: true
-  before_validation :set_default_due_date
 
-  private
+  scope :due_today, ->(user) { joins(:category).where("due_date <= ? AND categories.user_id = ?", Date.current, user.id) }
 
-  def set_default_due_date
-    self.due_date = Time.zone.now if due_date.nil?
+  def task_overdue?
+    !is_completed? && due_date? && due_date < Date.current
   end
 end

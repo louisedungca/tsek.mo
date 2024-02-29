@@ -19,6 +19,9 @@ module.exports = {
         accentV2: '#00BEAE',
         accentV3: '#FF8048',
       },
+      boxShadow: {
+        "shadow__dark": "0 0.15rem 0.15rem 0 rgba(28, 25, 23, 0.85)",
+      },
     },
   },
   plugins: [
