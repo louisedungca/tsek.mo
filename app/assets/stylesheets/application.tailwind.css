@@ -40,7 +40,7 @@
   }
 
   .actions {
-    @apply cursor-pointer w-full grid place-items-center px-4 py-2 rounded-3xl border-2 border-slate-950 font-extrabold hover:opacity-55 uppercase;
+    @apply cursor-pointer w-full grid place-items-center px-4 py-2 rounded-3xl border-2 border-slate-950 font-extrabold uppercase btn__hover;
   }
 
   .btn--main {
@@ -53,6 +53,10 @@
 
   .btn--subv2 {
     @apply bg-accentV2;
+  }
+
+  .btn__hover {
+    @apply hover:translate-y-[-0.2rem] hover:shadow-shadow__dark focus:translate-y-[-0.2rem] focus:shadow-shadow__dark;
   }
 
   .field {
