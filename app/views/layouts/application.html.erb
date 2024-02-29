@@ -20,8 +20,7 @@
       <%= render partial: "shared/nav" %>
       <div class="relative h-full w-full flex flex-col justify-center items-center gap-2 px-4 overflow">
         <%= yield %>
-      </div>
-      
+      </div>      
     </section>
 
     <% if params[:controller] == "categories" && params[:action] == "index" %>
