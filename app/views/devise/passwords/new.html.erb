@@ -19,13 +19,11 @@
           </div>
         </div>
       <% end %>
-      </div>
-      <div class="sharedlinks__bottom">
-        <%= render "devise/shared/links" %>
-      </div>
     </div>
-
-  <div class="h-1/4 w-full bg-primary border-t-2 border-slate-950 rounded-tr-[5rem] rounded-b-3xl">
-    <!--dark blue bottom design-->
+    <div class="sharedlinks__bottom">
+      <%= render "devise/shared/links" %>
+    </div>
   </div>
+
+  <%= render partial: "devise/shared/form_footer" %>
 </div>
