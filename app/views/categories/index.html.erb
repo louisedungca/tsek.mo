@@ -7,13 +7,9 @@
   <% end %>
 </div>
 
-<div class="overflow w-full h-full pr-4 py-2">
-  <% if @categories.size == 0 %>
-    <h1 class="header--main h-full w-full grid place-items-center drop-shadow-lg">
-      Add a category for your to-do
-    </h1>
-  <% else %>
-    <div class="w-full h-full grid--auto py-4 drop-shadow-lg">    
+<% if @categories.size > 0 %>
+  <div class="overflow w-full h-full pr-4 py-2">
+    <div class="w-full h-full grid--auto py-4 drop-shadow-lg">
       <% @categories.each do |category| %>  
         <div class="min-w-xl max-w-xl h-full max-h-[260px] bg-sky-50 border-2 border-slate-950 rounded-xl flex flex-col gap-2">
           <div class="relative max-h-fit bg-primary border-slate-950 border-b-2 rounded-t-lg p-4 text-sky-50 font-bold drop-shadow-lg">               
@@ -59,5 +55,5 @@
         </div>
       <% end %>
     </div>
-  <% end %>
-</div>
+  </div>
+<% end %>
