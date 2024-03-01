@@ -4,7 +4,7 @@ class CategoriesController < ApplicationController
 
   def index
     @categories = current_user.categories.all
-    @tasks_due_today = Task.due_today(current_user).order(:due_date)
+    @tasks_due_today = Task.due_today(current_user).sorted
   end
 
   def show
@@ -19,7 +19,7 @@ class CategoriesController < ApplicationController
 
     if @category.save
       flash[:notice] = "Category successfully added!"
-      redirect_to root_path
+      redirect_to category_path(@category)
     else
       flash[:alert] = "Oops, there was a problem adding a category. Please try again."
       render :new, status: 422
@@ -57,7 +57,7 @@ class CategoriesController < ApplicationController
 
   def set_category
     @category = current_user.categories.find(params[:id])
-    @tasks = @category.tasks.where.not(id: nil).order(:due_date)
+    @tasks = @category.tasks.sorted
 
   rescue ActiveRecord::RecordNotFound
     flash[:alert] = "Oh no! The category you were looking for does not exist."

@@ -1,5 +1,5 @@
 <% if current_user.present? %>
-  <nav class="bg-sky-100 border-2 border-slate-950 w-full h-16 rounded-3xl flex items-center justify-between px-6 py-4">
+  <nav class="bg-sky-100 border-2 border-slate-950 w-full h-16 rounded-3xl flex items-center justify-between px-6 py-4 drop-shadow-lg">
 
     <div class="flex items-center">
       <%= link_to root_path do %>
@@ -7,9 +7,10 @@
       <% end %>
       
       <%= link_to edit_user_registration_path do %>
-        <h1 class="header--main">
+        <div class="header--main flex items-center gap-4">
           hello, <%= current_user.email %>
-        </h1>
+          <i class="fa-solid fa-pencil grid place-items-center text-xs hover:text-sky-200"></i>
+        </div>
       <% end %>
     </div>
     

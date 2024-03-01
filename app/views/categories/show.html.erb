@@ -16,13 +16,18 @@
         <div class="w-full px-6 py-2 flex flex-col items-center gap-2 h-full overflow">
           <% @tasks.each do |task| %>
             <% if task.is_completed == false %>
-              <div class="border-2 border-slate-950 w-full py-4 px-6 rounded-2xl bg-slate-50">
+              <div class="border-2 border-slate-950 w-full py-4 px-6 rounded-2xl bg-slate-50 drop-shadow-lg">
                 <%= render partial: "tasks/show_task", locals: { task: task } %>
               </div>
             <% end %>        
           <% end %>
         </div>
       </div>
+    
+    <% else %>
+      <h1 class="header--main h-full grid place-items-center drop-shadow-lg">
+        No task to do
+      </h1>
     <% end %>
 
     <% if @tasks.any?(&:is_completed) %>
@@ -34,7 +39,7 @@
         <div class="w-full max-w-1/2 px-6 py-2 flex flex-col items-center h-full gap-2">
           <% @tasks.each do |task| %>
             <% if task.is_completed == true %>
-              <div class="border-2 border-slate-950 w-full py-4 px-6 rounded-2xl bg-slate-50">
+              <div class="border-2 border-slate-950 w-full py-4 px-6 rounded-2xl bg-slate-50 drop-shadow-lg">
                 <%= render partial: "tasks/show_task", locals: { task: task } %>
               </div>
             <% end %>        
