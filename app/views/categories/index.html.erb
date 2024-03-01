@@ -36,7 +36,7 @@
 
           <div class="h-[145px] flex flex-col p-2">
             <div class="overflow py-2 flex flex-col gap-2 max-h-full">   
-              <% category.tasks.each do |task| %>
+              <% category.tasks.sorted.each do |task| %>
                 <% if task.is_completed == false %>
                   <%= render partial: "tasks/show_task", locals: { task: task } %>
                 <% end %>
@@ -44,7 +44,7 @@
               
               <% if category.tasks.any?(&:is_completed) %>
                 <p class="uppercase mt-2">Completed:</p>
-                <% category.tasks.each do |task| %>
+                <% category.tasks.sorted.each do |task| %>
                   <% if task.is_completed == true %>
                     <%= render partial: "tasks/show_task", locals: { task: task } %>
                   <% end %>
