@@ -7,7 +7,7 @@
 
   <div class="flex justify-center items-center px-4 w-full h-auto p-2 actions bg-primary drop-shadow-lg">
     <%= link_to edit_category_path(@category) do %>
-      <h1 class="w-full uppercase text-lg text-sky-50 flex gap-4 items-center justify-center">
+      <h1 class="category-name w-full uppercase text-lg text-sky-50 flex gap-4 items-center justify-center">
         <%= truncate(@category.category_name, length: 50) %>
         <i class="fa-solid fa-pencil grid place-items-center text-xs"></i>
       </h1>

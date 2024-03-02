@@ -1,14 +1,15 @@
 # Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
-one:
+task_one:
   id: 1
   task_item: "Task 1"
   due_date: "2024-02-27 00:00:00"
   is_completed: false
   category_id: 1
 
-# two:
-#   task_item: MyString
-#   due_date: 2024-02-23 11:29:46
-#   is_completed: false
-#   category: two
+task_two:
+  id: 2
+  task_item: "Task 2"
+  due_date: "2024-02-27 00:00:00"
+  is_completed: false
+  category_id: 2
