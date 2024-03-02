@@ -1,55 +1,45 @@
 require "application_system_test_case"
-
 class CategoriesTest < ApplicationSystemTestCase
+  include Devise::Test::IntegrationHelpers
+
   setup do
+    `rake RAILS_ENV=test db:seed`
     @user = users(:user_one)
     @category = categories(:one)
-    `rake RAILS_ENV=test db:seed`
+
+    login
   end
-
-  test "visiting the index and create new category" do
-    visit categories_url
-
-    fill_in "Email", with: @user.email
-    fill_in "Password", with: @user.encrypted_password
-    click_on "Login"
-
+  test "visiting the index" do
     assert_selector "h1", text: "NEW CATEGORY"
-
+  end
+  test "should create category and redirect to the category page" do
     click_on "New Category"
-
     fill_in "Category Name:", with: @category.category_name
     click_on "Submit"
 
     assert_text "Category successfully added!"
-
-    # visit categories_url
-    # find("#delete-1")
-
-    # accept_alert do
-    #   click_button "OK"
-    # end
-
-    # assert_text "Category permanently deleted."
+    visit category_path(@category)
   end
+
+  private
+
+  def login
+    visit root_path
+    fill_in "Email", with: @user.email
+    fill_in "Password", with: "111111"
+    click_on "Login"
+
+    assert_navbar
+  end
+
+  def assert_navbar
+    assert_selector "img[alt='tsek.mo_logo']"
+    assert_selector "div", text: "hello, #{@user.email}"
+    assert_selector "a", text: "LOGOUT"
+  end
+end
 
 =begin
-  test "should create category" do
-    visit root_path
-
-    fill_in "Email", with: @user.email
-    fill_in "Password", with: @user.encrypted_password
-    click_on "Login"
-
-    click_on "New Category"
-
-    fill_in "Category Name:", with: @category.category_name
-    click_on "Submit"
-
-    assert_text "Category successfully added!"
-  end
-
-
   test "should update Category" do
     visit category_url(@category)
     click_on "Edit this category", match: :first
@@ -63,11 +53,21 @@ class CategoriesTest < ApplicationSystemTestCase
   end
 
   test "should destroy Category" do
-    visit category_url(@category)
-    click_on "Destroy this category", match: :first
+    visit categories_url
+    find("#delete-1")
 
-    assert_text "Category was successfully destroyed"
+    accept_alert do
+      click_button "OK"
+    end
+
+    assert_text "Category permanently deleted."
+  end
+
+  test "should log out current user" do
+    login
+
+    click_on "Logout"
+    page.driver.browser.switch_to.alert.accept
+    visit new_user_session_path
   end
 =end
-
-end
