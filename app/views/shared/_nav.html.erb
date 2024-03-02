@@ -15,7 +15,7 @@
     </div>
     
     <div class="w-max flex justify-center items-center text-sky-50">
-      <%= link_to "Logout", destroy_user_session_path, data: { turbo_method: :delete }, class: "actions btn--subv1" %>
+      <%= link_to "Logout", destroy_user_session_path, data: { turbo_method: :delete, turbo_confirm: "Log out of tsek.mo?" }, class: "actions btn--subv1" %>
     </div>
   </nav>
 <% end %>
