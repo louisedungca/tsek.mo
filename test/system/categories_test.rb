@@ -6,9 +6,11 @@ class CategoriesTest < ApplicationSystemTestCase
 
     login
   end
+
   test "visiting the index" do
     assert_selector "h1", text: "NEW CATEGORY"
   end
+
   test "should create new Category and redirect to the Category page" do
     click_on "New Category"
     fill_in "Category Name:", with: @category.category_name
@@ -17,6 +19,7 @@ class CategoriesTest < ApplicationSystemTestCase
     assert_text "Category successfully added!"
     visit category_path(@category)
   end
+
   test "should update Category on Category page" do
     visit category_path(@category)
     assert_selector ".category-name", text: @category.category_name.upcase
@@ -29,6 +32,7 @@ class CategoriesTest < ApplicationSystemTestCase
     assert_text "Category name successfully updated!"
     assert_selector ".category-name", text: new_category_name.upcase
   end
+
   test "should destroy Category on Category page" do
     visit category_path(@category)
 
@@ -42,7 +46,6 @@ class CategoriesTest < ApplicationSystemTestCase
 
     assert_text "Category permanently deleted."
   end
-
 
   private
 
