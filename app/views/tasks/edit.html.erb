@@ -20,18 +20,18 @@
         
         <div class="h-full w-full flex flex-col gap-2">
           <div class="field">
-            <%= form.label "Due Date:" %>
+            <%= form.label :due_date, "Due Date:" %>
             <%= form.date_field :due_date %>
           </div>
 
           <div class="field">
-            <%= form.label "Task:" %>
+            <%= form.label :task_item, "Task:" %>
             <%= form.text_field :task_item %>
           </div>
 
           <div class="field flex-row items-center">
-            <%= form.check_box :is_completed, as: :boolean %>
-            <%= form.label "Done" %>
+            <%= form.check_box :is_completed, as: :boolean, class:"checkbox" %>
+            <%= form.label :is_completed, "Done" %>
           </div>
         </div>  
 

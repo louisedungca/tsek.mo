@@ -2,46 +2,72 @@ require "application_system_test_case"
 
 class TasksTest < ApplicationSystemTestCase
   setup do
-    @task = tasks(:one)
+    @user = users(:user_one)
+    @category = categories(:categ_one)
+    @task = tasks(:task_one)
+
+    login
   end
 
-  test "visiting the index" do
-    visit tasks_url
-    assert_selector "h1", text: "Tasks"
-  end
+  test "should create Task" do
+    visit category_path(@category)
 
-  test "should create task" do
-    visit tasks_url
-    click_on "New task"
+    within(".form__block") do
+      fill_in "Due Date:", with: @task.due_date
+      fill_in "Task:", with: @task.task_item
+      click_on "Create Task"
+    end
 
-    fill_in "Category", with: @task.category_id
-    fill_in "Due date", with: @task.due_date
-    check "Is completed" if @task.is_completed
-    fill_in "Task item", with: @task.task_item
-    click_on "Create Task"
-
-    assert_text "Task was successfully created"
-    click_on "Back"
+    assert_text "Task successfully added!"
   end
 
   test "should update Task" do
-    visit task_url(@task)
-    click_on "Edit this task", match: :first
+    visit category_path(@category)
 
-    fill_in "Category", with: @task.category_id
-    fill_in "Due date", with: @task.due_date
-    check "Is completed" if @task.is_completed
-    fill_in "Task item", with: @task.task_item
-    click_on "Update Task"
+    within(".task-btns") do
+      edit_button = find("a[href='#{edit_category_task_path(@category, @task)}']")
+      edit_button.click
+    end
 
-    assert_text "Task was successfully updated"
-    click_on "Back"
+    within(".form__block") do
+      new_due_date = "2024-03-15 00:00:00"
+      new_task_name = "Edited Task Name"
+
+      fill_in "Due Date:", with: new_due_date
+      fill_in "Task:", with: new_task_name
+      click_on "Submit"
+    end
+
+    assert_text "Task item successfully updated!"
+    click_on "Home"
   end
 
   test "should destroy Task" do
-    visit task_url(@task)
-    click_on "Destroy this task", match: :first
+    visit category_path(@category)
 
-    assert_text "Task was successfully destroyed"
+    within(".task-btns") do
+      delete_button = find("a[href='#{category_task_path(@category, @task)}'][data-turbo-method='delete']")
+
+      accept_confirm do
+        delete_button.click
+      end
+    end
+
+    assert_text "Task permanently deleted."
+  end
+
+  private
+
+  def login
+    visit root_path
+    fill_in "Email", with: @user.email
+    fill_in "Password", with: "111111"
+    click_on "Login"
+
+    assert_navbar
+  end
+
+  def assert_navbar
+    assert page.has_css?(".navbar"), "Navbar not found."
   end
 end

@@ -17,7 +17,6 @@ class CategoriesTest < ApplicationSystemTestCase
     click_on "Submit"
 
     assert_text "Category successfully added!"
-    visit category_path(@category)
   end
 
   test "should update Category on Category page" do
