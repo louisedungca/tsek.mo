@@ -1,6 +1,10 @@
 class TasksController < ApplicationController
-  before_action :set_category
-  before_action :set_task, except: [:create]
+  before_action :set_category, except: [:error]
+  before_action :set_task, except: [:create, :error]
+
+  def show
+    redirect_to category_path(@category)
+  end
 
   def create
     @task = @category.tasks.build(task_params)
@@ -25,14 +29,17 @@ class TasksController < ApplicationController
       flash[:alert] = "Oops, there was a problem updating the task item. Please try again."
       render :edit, status: 422
     end
-
-    puts params.inspect
   end
 
   def destroy
     @task.destroy
     flash[:alert] = "Task permanently deleted."
     redirect_back(fallback_location: root_path)
+  end
+
+  def error
+    flash[:alert] = "Page not found."
+    redirect_to root_path
   end
 
   private
@@ -47,7 +54,7 @@ class TasksController < ApplicationController
     @category = Category.find(params[:category_id])
 
   rescue ActiveRecord::RecordNotFound
-    flash[:alert] = "Oh no! The category you were looking for does not exist."
+    flash[:alert] = "Oh no! The page you were looking for does not exist."
     redirect_to categories_path
   end
 

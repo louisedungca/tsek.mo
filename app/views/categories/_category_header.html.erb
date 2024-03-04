@@ -7,15 +7,15 @@
 
   <div class="flex justify-center items-center px-4 w-full h-auto p-2 actions bg-primary drop-shadow-lg">
     <%= link_to edit_category_path(@category) do %>
-      <h1 class="w-full uppercase text-lg text-sky-50 flex gap-4 items-center justify-center">
+      <h1 class="category-name w-full uppercase text-lg text-sky-50 flex gap-4 items-center justify-center">
         <%= truncate(@category.category_name, length: 50) %>
         <i class="fa-solid fa-pencil grid place-items-center text-xs"></i>
       </h1>
     <% end %>                                    
   </div>
 
-  <div class="grid place-items-center bg-accentV3 rounded-full h-10 aspect-1 text-slate-950 border-2 border-slate-950 btn__hover drop-shadow-lg">
-    <%= link_to category_path(@category), data: { turbo_method: :delete, turbo_confirm: "Are you sure you want to permanently delete this category?" }  do %>
+  <div class="delete-btn grid place-items-center bg-accentV3 rounded-full h-10 aspect-1 text-slate-950 border-2 border-slate-950 btn__hover drop-shadow-lg">
+    <%= link_to category_path(@category), data: { turbo_method: :delete, turbo_confirm: "Are you sure you want to permanently delete this category?" } do %>
       <i class="fa-solid fa-x text-sky-50"></i>
     <% end %>
   </div>

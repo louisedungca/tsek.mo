@@ -1,5 +1,5 @@
 <% if current_user.present? %>
-  <nav class="bg-sky-100 border-2 border-slate-950 w-full h-16 rounded-3xl flex items-center justify-between px-6 py-4 drop-shadow-lg">
+  <nav class="navbar bg-sky-100 border-2 border-slate-950 w-full h-16 rounded-3xl flex items-center justify-between px-6 py-4 drop-shadow-lg">
 
     <div class="flex items-center">
       <%= link_to root_path do %>
@@ -15,7 +15,7 @@
     </div>
     
     <div class="w-max flex justify-center items-center text-sky-50">
-      <%= link_to "Logout", destroy_user_session_path, data: { turbo_method: :delete }, class: "actions btn--subv1" %>
+      <%= link_to "Logout", destroy_user_session_path, data: { turbo_method: :delete, turbo_confirm: "Log out of tsek.mo?" }, class: "actions btn--subv1" %>
     </div>
   </nav>
 <% end %>

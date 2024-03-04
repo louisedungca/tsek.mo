@@ -11,5 +11,10 @@ module ActiveSupport
     fixtures :all
 
     # Add more helper methods to be used by all tests here...
+    # setup do
+    #   # Load the seed data into the test database
+    #   `rake RAILS_ENV=test db:seed`
+    # end
+
   end
 end

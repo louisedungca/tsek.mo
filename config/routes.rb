@@ -4,8 +4,10 @@ Rails.application.routes.draw do
   }
 
   resources :categories do
-    resources :tasks
+    resources :tasks, except: [:index]
   end
 
   root "categories#index"
+
+  match "*path", to: "tasks#error", via: :all
 end
