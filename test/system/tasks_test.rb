@@ -30,7 +30,7 @@ class TasksTest < ApplicationSystemTestCase
     end
 
     within(".form__block") do
-      new_due_date = "2024-03-15 00:00:00"
+      new_due_date = "03-15-2024 00:00:00"
       new_task_name = "Edited Task Name"
 
       fill_in "Due Date:", with: new_due_date
