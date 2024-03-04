@@ -4,7 +4,10 @@ class CategoriesController < ApplicationController
 
   def index
     @categories = current_user.categories.all
-    @tasks_due_today = Task.due_today(current_user).sorted
+    @tasks_due_today = current_user.tasks.due_today.sorted
+
+    @q = @categories.ransack(params[:q])
+    @search_result = @q.result(distinct: true)
   end
 
   def show
