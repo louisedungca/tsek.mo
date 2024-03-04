@@ -1,4 +1,4 @@
-<div class="w-2/3 h-[90%] border-2 border-slate-950 rounded-3xl bg-sky-100 flex flex-col justify-between gap-2 drop-shadow-lg">
+<div class="w-2/3 h-full mt-4 border-2 border-slate-950 rounded-3xl bg-sky-100 flex flex-col justify-between gap-2 drop-shadow-lg">
 
   <div class="header--main border-b-2 border-slate-950">
     <h1 class="form__header">Edit <%= resource_name.to_s.humanize %> Profile</h1>
@@ -20,11 +20,11 @@
           <% end %>
 
           <div class="field">
-            <%= f.label :password %>
-            <%= f.password_field :password, placeholder: "Enter new password", autocomplete: "new-password" %>
+            <%= f.label :password %>            
             <% if @minimum_password_length %>
               <small><%= @minimum_password_length %> characters minimum</small>
             <% end %>
+            <%= f.password_field :password, placeholder: "Enter new password", autocomplete: "new-password" %>
           </div>
 
           <div class="field">
