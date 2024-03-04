@@ -51,8 +51,10 @@ class UsersTest < ApplicationSystemTestCase
       click_on email
     end
 
-    accept_confirm do
-      click_on "Delete Account"
+    within(".sharedlinks__bottom") do
+      accept_confirm do
+        click_on "Delete Account"
+      end
     end
 
     assert_text "Please log in to your account to continue."

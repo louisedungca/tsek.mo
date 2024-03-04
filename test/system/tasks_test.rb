@@ -33,8 +33,8 @@ class TasksTest < ApplicationSystemTestCase
       new_due_date = "03-15-2024 00:00:00"
       new_task_name = "Edited Task Name"
 
-      fill_in "Due Date:", with: new_due_date
       fill_in "Task:", with: new_task_name
+      fill_in "Due Date:", with: new_due_date
       click_on "Submit"
     end
 
