@@ -3,8 +3,14 @@ class CategoriesController < ApplicationController
   before_action :set_category, except: [:index, :create, :new]
 
   def index
-    @categories = current_user.categories.all
-    @tasks_due_today = Task.due_today(current_user).sorted
+    @q = current_user.categories.ransack(params[:q])
+    @categories = @q.result(distinct: true)
+    @tasks_due_today = current_user.tasks.due_today.sorted
+
+    if @categories.empty?
+      flash[:alert] = "Hmm. The category you were looking for does not exist."
+      redirect_to categories_path
+    end
   end
 
   def show
@@ -60,7 +66,7 @@ class CategoriesController < ApplicationController
     @tasks = @category.tasks.sorted
 
   rescue ActiveRecord::RecordNotFound
-    flash[:alert] = "Oh no! The category you were looking for does not exist."
+    flash[:alert] = "Hmm. The category you were looking for does not exist."
     redirect_to root_path
   end
 end

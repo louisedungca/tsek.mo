@@ -5,7 +5,7 @@ class UsersTest < ApplicationSystemTestCase
     @user = users(:user_one)
   end
 
-  test "should sign in existing user and edit details" do
+  test "should sign in existing user and edit details and logout" do
     visit user_session_path
     fill_in "Email", with: @user.email
     fill_in "Password", with: "111111"
@@ -32,6 +32,15 @@ class UsersTest < ApplicationSystemTestCase
     end
 
     assert_text "Your account has been successfully updated."
+
+    within(".navbar") do
+      accept_confirm do
+        click_on "Logout"
+      end
+    end
+
+    assert_selector "h1", text: "hey, you're back!"
+    assert_text "Please log in to your account to continue."
   end
 
   test "should register new user and destroy user" do

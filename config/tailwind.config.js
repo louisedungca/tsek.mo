@@ -22,6 +22,9 @@ module.exports = {
       boxShadow: {
         "shadow__dark": "0 0.15rem 0.15rem 0 rgba(28, 25, 23, 0.85)",
       },
+      fontSize: {
+        fSize__header: "clamp(1rem, 0.7857rem + 1.1429vw, 2.2rem)",
+      },
     },
   },
   plugins: [

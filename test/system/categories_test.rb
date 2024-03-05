@@ -12,8 +12,9 @@ class CategoriesTest < ApplicationSystemTestCase
   end
 
   test "should create new Category and redirect to the Category page" do
+    category_name = "Henlo"
     click_on "New Category"
-    fill_in "Category Name:", with: @category.category_name
+    fill_in "Category Name:", with: category_name
     click_on "Submit"
 
     assert_text "Category successfully added!"
