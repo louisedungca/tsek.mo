@@ -8,6 +8,17 @@
 </div>
 
 <% if @categories.size > 0 %>
+  <div class="w-2/5 max-h-[1rem] drop-shadow-lg">
+    <%= search_form_for @q, url: categories_path do |form| %>
+      <div class="field flex-row">
+        <%= form.search_field :category_name_cont, placeholder: "Search Category", class:"text-xs min-h-[0.85rem]" %>
+        <%= form.button do %>
+          <i class="fa-solid fa-magnifying-glass h-1/2"></i>
+        <% end %>
+      </div>
+    <% end %>
+  </div>
+
   <div class="overflow w-full h-full pr-4 py-2">
     <div class="w-full h-full grid--auto py-4 drop-shadow-lg">
       <% @categories.each do |category| %>  

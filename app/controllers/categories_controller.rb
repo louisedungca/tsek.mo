@@ -3,11 +3,9 @@ class CategoriesController < ApplicationController
   before_action :set_category, except: [:index, :create, :new]
 
   def index
-    @categories = current_user.categories.all
+    @q = current_user.categories.ransack(params[:q])
+    @categories = @q.result(distinct: true)
     @tasks_due_today = current_user.tasks.due_today.sorted
-
-    @q = @categories.ransack(params[:q])
-    @search_result = @q.result(distinct: true)
   end
 
   def show

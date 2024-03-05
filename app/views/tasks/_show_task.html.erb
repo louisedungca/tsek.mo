@@ -7,7 +7,7 @@
       </div>   
     </div>        
 
-    <div class="task-btns flex items-center gap-3">
+    <div class="task-btns <%= task.is_completed ? "hidden" : "flex items-center gap-3" %>">
       <%= link_to edit_category_task_path(task.category_id, task.id) do %>
         <i class="fa-regular fa-pen-to-square drop-shadow-lg"></i>
       <% end %>

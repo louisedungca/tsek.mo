@@ -29,7 +29,7 @@
   }
 
   .header--main {
-    @apply w-full h-16 flex items-center gap-2 px-6 py-2 text-3xl text-sky-600/55 lowercase font-bold;
+    @apply w-full h-16 flex items-center gap-2 px-6 py-2 text-fSize__header text-sky-600/55 lowercase font-bold;
   }
   .form__block {
     @apply w-full h-full flex flex-col justify-between sm:justify-center items-center gap-4 px-12 py-4;

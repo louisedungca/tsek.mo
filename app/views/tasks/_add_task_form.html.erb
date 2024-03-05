@@ -1,34 +1,31 @@
 <div class="w-full">
   <%= form_with model: [ @category, @category.tasks.build ] do |form| %>
-    <div class="w-full h-full flex flex-col justify-center gap-3 sm:gap-[1.5rem]">
-    <% if @category.errors.any? %>    
-      <div class="flex flex-col justify-center">
-        <% @category.errors.full_messages.each do |message| %>
-          <p class="text-red-500 text-fSize__sm lowercase font-semibold">
-            ** <%= message %>
-          </p>
-        <% end %>  
-      </div>
-    <% end %>
-    
-    <div class="h-full w-full flex flex-col gap-2">
-      <div class="field">
-        <%= form.label :due_date, "Due Date:" %>
-        <%= form.date_field :due_date %>
+    <div class="w-full h-full flex flex-col justify-center gap-3">       
+      <% if @category.errors.any? %>
+        <div class="flex flex-col justify-center">
+          <% @category.errors.full_messages.each do |message| %>
+            <p class="text-red-500 text-fSize__sm lowercase font-semibold">
+              <%= message %>
+            </p>
+          <% end %>  
+        </div>
+      <% end %>
+
+      <div class="h-full w-full flex flex-col gap-2">
+        <div class="field">
+          <%= form.label :due_date, "Due Date:" %>
+          <%= form.date_field :due_date %>
+        </div>
+
+        <div class="field">
+          <%= form.label :task_item, "Task:" %>
+          <%= form.text_field :task_item %>
+        </div>
       </div>
 
-      <div class="field">
-        <%= form.label :task_item, "Task:" %>
-        <%= form.text_field :task_item %>
+      <div class="sharedlinks__bottom">
+        <%= form.button "Create Task", class:"actions btn--main" %>
       </div>
-    </div>  
-
-    <%= form.hidden_field :user_id, value: current_user.id %>
-
-    <div class="sharedlinks__bottom">
-      <%= form.button "Create Task", class:"actions btn--main" %>
-      <%#= link_to "Home", categories_path, class:"actions bg-secondary" %>
     </div>
-  </div>
-  <% end %>
+  <% end %>  
 </div>
