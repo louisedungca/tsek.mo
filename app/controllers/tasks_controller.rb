@@ -38,7 +38,7 @@ class TasksController < ApplicationController
   end
 
   def error
-    flash[:alert] = "Page not found."
+    flash[:alert] = "Hmm. Page not found."
     redirect_to root_path
   end
 
@@ -54,7 +54,7 @@ class TasksController < ApplicationController
     @category = Category.find(params[:category_id])
 
   rescue ActiveRecord::RecordNotFound
-    flash[:alert] = "Oh no! The page you were looking for does not exist."
+    flash[:alert] = "Hmm. The page you were looking for does not exist."
     redirect_to categories_path
   end
 
@@ -63,7 +63,7 @@ class TasksController < ApplicationController
     @task = @category.tasks.find(params[:id])
 
   rescue ActiveRecord::RecordNotFound
-    flash[:alert] = "Oh no! The task you were looking for does not exist."
+    flash[:alert] = "Hmm. The task you were looking for does not exist."
     redirect_to category_path(@category)
   end
 end
