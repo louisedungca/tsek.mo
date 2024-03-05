@@ -7,7 +7,7 @@ class CategoriesController < ApplicationController
     @categories = @q.result(distinct: true)
     @tasks_due_today = current_user.tasks.due_today.sorted
 
-    if @categories.empty?
+    if params[:q].present? && @categories.empty?
       flash[:alert] = "Hmm. The category you were looking for does not exist."
       redirect_to categories_path
     end
