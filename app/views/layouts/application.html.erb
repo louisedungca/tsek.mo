@@ -15,7 +15,7 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/2.3.0/flowbite.min.js" defer></script>
 </head>
 
-<body class="relative bg-sky-50 w-full min-h-dvh flex flex-col items-center overflow">
+<body class="relative bg-sky-50 w-full min-h-dvh flex flex-col items-center overflow-hidden">
   <%= render partial: "shared/toast_success", locals: { message_success: flash[:notice] } %>
   <%= render partial: "shared/toast_error", locals: {  message_error: flash[:alert] } %>
 

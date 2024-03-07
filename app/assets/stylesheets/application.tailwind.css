@@ -64,7 +64,7 @@
   }
 
   .field input, .field textarea {
-    @apply border-2 border-slate-950 rounded-2xl w-full;
+    @apply border-2 border-slate-950 rounded-2xl w-full h-8 text-xs;
   }
 
   .field input[type="checkbox"] {
