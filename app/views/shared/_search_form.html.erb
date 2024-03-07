@@ -1,7 +1,12 @@
-<%= search_form_for @q do |f| %>
-
-  <%= f.label :category_name %>
-  <%= f.search_field :category_name %>
-
-  <%= f.submit %>
-<% end %>
+<div class="w-full flex justify-end p-2">
+  <div class="w-1/4 max-h-fit drop-shadow-lg">
+    <%= search_form_for @q, url: categories_path do |form| %>
+      <div class="field flex-row">
+        <%= form.search_field :category_name_cont, placeholder: "Search Category", class:"text-xs min-h-[0.85rem]" %>
+        <%= form.button do %>
+          <i class="fa-solid fa-magnifying-glass h-1/2"></i>
+        <% end %>
+      </div>
+    <% end %>
+  </div> 
+</div>

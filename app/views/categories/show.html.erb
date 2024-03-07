@@ -1,12 +1,12 @@
 <%= render partial: "category_header" %>
 
-<div class="w-full h-[85%] px-6 flex justify-center">
+<div class="w-full h-[85%] py-2 px-6 flex justify-center">
   <%= render partial: "tasks/new_task" %>
 
 <!--show task-->
-  <div class="w-2/3 h-full flex">
+  <div class="w-full lg:w-2/3 h-full flex flex-col lg:flex-row">
     <% if @tasks.size > 0 %>
-      <div class="flex flex-col w-1/2">
+      <div class="flex flex-col lg:w-1/2">
         <h1 class="header--main">
           <% incomplete_tasks_count = @tasks.count { |task| !task.is_completed } %>
           <%= incomplete_tasks_count > 1 ? "Tasks" : "Task" %>
@@ -23,7 +23,6 @@
           <% end %>
         </div>
       </div>
-    
     <% else %>
       <h1 class="header--main h-full grid place-items-center drop-shadow-lg">
         No task to do
@@ -31,7 +30,7 @@
     <% end %>
 
     <% if @tasks.any?(&:is_completed) %>
-      <div class="flex flex-col w-1/2">        
+      <div class="flex flex-col lg:w-1/2">        
         <h1 class="header--main">
           Completed
         </h1>    
