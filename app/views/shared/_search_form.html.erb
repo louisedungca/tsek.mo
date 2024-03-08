@@ -1,5 +1,5 @@
 <div class="w-full flex justify-end p-2">
-  <div class="w-1/4 max-h-fit drop-shadow-lg">
+  <div class="w-fit max-h-fit drop-shadow-lg">
     <%= search_form_for @q, url: categories_path do |form| %>
       <div class="field flex-row">
         <%= form.search_field :category_name_cont, placeholder: "Search Category", class:"text-xs min-h-[0.85rem]" %>

@@ -3,11 +3,11 @@
 
     <div class="flex items-center">
       <%= link_to root_path do %>
-        <%= image_tag("tsekmo_logo.png", alt: "tsek.mo_logo", class:"w-10 h-10 drop-shadow-xl hover:opacity-60") %>      
+        <%= image_tag("tsekmo_logo.png", alt: "tsek.mo_logo", class:"w-6 h-6 sm:w-10 sm:h-10 drop-shadow-xl hover:opacity-60") %>      
       <% end %>
       
       <%= link_to edit_user_registration_path do %>
-        <div class="header--main flex items-center gap-4">
+        <div class="header--main flex items-center gap-4 text-balance">
           hello, <%= current_user.email %>
           <i class="fa-solid fa-pencil grid place-items-center text-xs hover:text-sky-200"></i>
         </div>
@@ -15,7 +15,14 @@
     </div>
     
     <div class="w-max flex justify-center items-center text-sky-50">
-      <%= link_to "Logout", destroy_user_session_path, data: { turbo_method: :delete, turbo_confirm: "Log out of tsek.mo?" }, class: "actions btn--subv1" %>
+      <%= link_to destroy_user_session_path, data: { turbo_method: :delete, turbo_confirm: "Log out of tsek.mo?" }, class: "actions btn--subv1" do %>
+        <div class="flex items-center gap-2">
+          <i class="fa-solid fa-arrow-right-from-bracket"></i>
+          <p class="hidden sm:inline-flex">
+            Logout
+          </p>
+        </div>
+      <% end %>
     </div>
   </nav>
 <% end %>
