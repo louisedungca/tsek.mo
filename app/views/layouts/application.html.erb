@@ -28,7 +28,9 @@
     </section>
 
     <% if params[:controller] == "categories" && params[:action] == "index" %>
-      <%= render partial: "task_today" %>
+      <aside class="w-1/3 h-full p-2 drop-shadow-lg hidden sm:inline-flex">
+        <%= render partial: "task_today" %>
+      </aside>
     <% end %>
   </main>
 </body>

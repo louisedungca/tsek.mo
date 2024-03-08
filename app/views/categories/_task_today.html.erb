@@ -1,13 +1,13 @@
-<aside class="w-1/3 h-full p-2 drop-shadow-lg">
-  <div class="w-full h-full border-2 border-slate-950 rounded-3xl bg-sky-100 flex flex-col justify-between gap-2">
-    <div class="header--main border-b-2 border-slate-950">
-      <h1>Today</h1>
+<div class="w-full h-full border-2 border-slate-950 rounded-3xl bg-sky-100 flex flex-col sm:justify-between gap-2">
+  <div class="header--main border-b-2 border-slate-950">
+    <h1>Today</h1>
 
-      <% incomplete_tasks_count = @tasks_due_today.count { |task| !task.is_completed } %>
-      <%= "(#{incomplete_tasks_count})" %>
-    </div>      
-      
-    <div class="h-2/3 px-6 py-2 flex flex-col items-center overflow">
+    <% incomplete_tasks_count = @tasks_due_today.count { |task| !task.is_completed } %>
+    <%= "(#{incomplete_tasks_count})" %>
+  </div>      
+  
+  <div class="h-[120px] sm:h-full py-4 px-2">
+    <div class="h-full px-2 flex flex-col items-center overflow">
       <% if @tasks_due_today.size > 0 %>
         
         <div class="py-2 flex flex-col gap-2 max-h-full w-full">
@@ -32,12 +32,12 @@
         </h1>
       <% end %>   
     </div>
-
-    <div class="h-1/5 w-full bg-primary border-t-2 border-slate-950 rounded-tl-[5rem] rounded-b-3xl flex flex-col items-center justify-end p-4">
-      <%#= image_tag("tsekmo_logo.png", alt: "tsek.mo_logo", class:"w-8 h-8") %>
-      <h1 class="h-fit font-semibold text-sky-50 text-xs">
-        tsek.mo © 2024
-      </h1>
-    </div>
   </div>
-</aside>
+
+  <div class="h-1/5 w-full bg-primary border-t-2 border-slate-950 rounded-tl-[5rem] rounded-b-3xl hidden sm:flex flex-col items-center justify-end p-4">
+    <%#= image_tag("tsekmo_logo.png", alt: "tsek.mo_logo", class:"w-8 h-8") %>
+    <h1 class="h-fit font-semibold text-sky-50 text-xs">
+      tsek.mo © 2024
+    </h1>
+  </div>
+</div>

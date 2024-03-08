@@ -29,18 +29,14 @@
   }
 
   .header--main {
-    @apply w-full h-16 flex items-center gap-2 px-6 py-2 text-fSize__header text-sky-600/55 lowercase font-bold;
+    @apply w-full h-auto flex items-center gap-2 px-6 py-4 text-fSize__xl text-sky-600/55 lowercase font-bold;
   }
   .form__block {
-    @apply w-full h-full flex flex-col justify-between sm:justify-center items-center gap-4 px-12 py-4;
-  }
-
-  .form__header {
-    @apply w-full text-3xl font-bold;
+    @apply w-full h-full flex flex-col justify-between sm:justify-center items-center gap-4 px-4 sm:px-12 py-4;
   }
 
   .actions {
-    @apply cursor-pointer w-full grid place-items-center px-4 py-2 rounded-3xl border-2 border-slate-950 font-extrabold uppercase btn__hover drop-shadow-lg;
+    @apply cursor-pointer w-full grid place-items-center px-4 py-2 rounded-3xl border-2 border-slate-950 text-xs font-extrabold uppercase btn__hover drop-shadow-lg text-balance text-center;
   }
 
   .btn--main {
@@ -72,13 +68,20 @@
   }
 
   .sharedlinks__bottom {
-    @apply w-full flex flex-col gap-2 p-2 mt-4;
+    @apply w-full flex flex-col gap-2 p-2 sm:mt-4;
   }
 
   .grid--auto {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
     gap: 1rem;
+  }
+
+  .grid--mobile {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: 1rem;
+    padding: 0.85rem;
   }
 
   .overflow {

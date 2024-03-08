@@ -23,7 +23,8 @@ module.exports = {
         "shadow__dark": "0 0.15rem 0.15rem 0 rgba(28, 25, 23, 0.85)",
       },
       fontSize: {
-        fSize__header: "clamp(1rem, 0.7857rem + 1.1429vw, 2.2rem)",
+        fSize__xl: "clamp(1rem, 0.7368rem + 1.3158vw, 2rem)",
+        fSize__main: "clamp(0.65rem, 0.4263rem + 1.1184vw, 1.5rem)",
       },
     },
   },
