@@ -22,7 +22,7 @@ class UsersTest < ApplicationSystemTestCase
     new_password = "new_password"
 
     fill_in "Email", with: new_email
-    fill_in "Password", with: new_password
+    fill_in "New Password", with: new_password
     fill_in "Password confirmation", with: new_password
     fill_in "Current password", with: "111111"
     click_on "Update"
