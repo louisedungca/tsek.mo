@@ -5,31 +5,33 @@
     <% incomplete_tasks_count = @tasks_due_today.count { |task| !task.is_completed } %>
     <%= "(#{incomplete_tasks_count})" %>
   </div>      
-    
-  <div class="sm:h-2/3 px-6 py-2 flex flex-col items-center overflow">
-    <% if @tasks_due_today.size > 0 %>
-      
-      <div class="py-2 flex flex-col gap-2 max-h-full w-full">
-        <% @tasks_due_today.each do |task| %>
-          <% if task.is_completed == false %>
-            <%= render partial: "tasks/show_task", locals: { task: task } %>
-          <% end %>
-        <% end %>
-
-        <% if @tasks_due_today.any?(&:is_completed) %>
-          <p class="w-full uppercase mt-2 text-sm">Completed:</p>
+  
+  <div class="h-[120px] sm:h-full py-4 px-2">
+    <div class="h-full px-2 flex flex-col items-center overflow">
+      <% if @tasks_due_today.size > 0 %>
+        
+        <div class="py-2 flex flex-col gap-2 max-h-full w-full">
           <% @tasks_due_today.each do |task| %>
-            <% if task.is_completed == true %>
+            <% if task.is_completed == false %>
               <%= render partial: "tasks/show_task", locals: { task: task } %>
             <% end %>
           <% end %>
-        <% end %>     
-      </div>     
-    <% else %>
-      <h1>
-        No task due today
-      </h1>
-    <% end %>   
+
+          <% if @tasks_due_today.any?(&:is_completed) %>
+            <p class="w-full uppercase mt-2 text-sm">Completed:</p>
+            <% @tasks_due_today.each do |task| %>
+              <% if task.is_completed == true %>
+                <%= render partial: "tasks/show_task", locals: { task: task } %>
+              <% end %>
+            <% end %>
+          <% end %>     
+        </div>     
+      <% else %>
+        <h1>
+          No task due today
+        </h1>
+      <% end %>   
+    </div>
   </div>
 
   <div class="h-1/5 w-full bg-primary border-t-2 border-slate-950 rounded-tl-[5rem] rounded-b-3xl hidden sm:flex flex-col items-center justify-end p-4">
