@@ -48,9 +48,6 @@ class CategoriesController < ApplicationController
     if @category.destroy
       flash[:alert] = "Category permanently deleted."
       redirect_to categories_path
-    else
-      flash[:alert] = "Oops, there was a problem deleting the item. Please try again."
-      render :index, status: 422
     end
   end
 
