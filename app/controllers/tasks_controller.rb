@@ -52,17 +52,9 @@ class TasksController < ApplicationController
 
   def set_category
     @category = current_user.categories.find(params[:category_id])
-
-  rescue ActiveRecord::RecordNotFound
-    flash[:alert] = "Hmm. The page you were looking for does not exist."
-    redirect_to categories_path
   end
 
   def set_task
     @task = @category.tasks.find(params[:id])
-
-  rescue ActiveRecord::RecordNotFound
-    flash[:alert] = "Hmm. The task you were looking for does not exist."
-    redirect_to category_path(@category)
   end
 end

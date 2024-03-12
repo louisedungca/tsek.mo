@@ -18,7 +18,7 @@
     </div>
   </div>
 
-  <% if task.task_overdue? %>
+  <% if task.overdue? %>
     <div class="w-full text-red-500 font-bold px-9 text-xs italic">
       <%= content_tag :small, task.due_date.strftime("%m/%d/%Y") %>
     </div>

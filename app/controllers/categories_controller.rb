@@ -13,6 +13,7 @@ class CategoriesController < ApplicationController
   end
 
   def show
+    @tasks = @category.tasks.sorted
   end
 
   def new
@@ -59,10 +60,5 @@ class CategoriesController < ApplicationController
 
   def set_category
     @category = current_user.categories.find(params[:id])
-    @tasks = @category.tasks.sorted
-
-  rescue ActiveRecord::RecordNotFound
-    flash[:alert] = "Hmm. The category you were looking for does not exist."
-    redirect_to root_path
   end
 end
